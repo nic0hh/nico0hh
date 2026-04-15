@@ -85,7 +85,9 @@ Traffic remained entirely within the local subnet with no external connections o
 
 - DNS queries were then isolated to reduce noise further, filtering to queries only and excluding responses: `dns.flags.response == 0 && !(eth.type == 0x6969) && !(udp.port == 1900) && !(udp.port == 5353)`
 
-- Pi-hole DNS integrity check by excluding Pi-hole instances and Cloudflare upstream queries: `dns && ip.dst == 1.1.1.1 && !(ip.src == 192.168.2.202) && !(ip.src == 192.168.2.32)`. The Pi-hole instances were excluded as they legitimately forward queries to Cloudflare upstream — any other host querying 1.1.1.1 directly would indicate a bypass. No such traffic was detected. All DNS queries observed during the capture window were routed through Pi-hole, confirming the filtering stack is functioning correctly.
+- Pi-hole DNS integrity check by excluding Pi-hole instances and Cloudflare upstream queries: `dns && ip.dst == 1.1.1.1 && !(ip.src == 192.168.2.202) && !(ip.src == 192.168.2.32)`.
+
+The Pi-hole instances were excluded as they legitimately forward queries to Cloudflare upstream — any other host querying 1.1.1.1 directly would indicate a bypass. No such traffic was detected. All DNS queries observed during the capture window were routed through Pi-hole, confirming the filtering stack is functioning correctly.
 
 ### NEAC Protect Anti-Cheat (Naraka: Bladepoint)
 
