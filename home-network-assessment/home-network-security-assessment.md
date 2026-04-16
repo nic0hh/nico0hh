@@ -91,7 +91,7 @@ The Pi-hole instances were excluded as they legitimately forward queries to Clou
 
 ### NEAC Protect Anti-Cheat (Naraka: Bladepoint)
 
-NEAC Protect is a kernel-level anti-cheat driver, at times being accused of being spyware online.
+NEAC Protect is a kernel-level anti-cheat driver, at times accused of being spyware online.
 
 - The initial query for "neac" did not yield any results: `dns.qry.name contains "neac"`
 
