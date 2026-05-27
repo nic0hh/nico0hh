@@ -1,7 +1,7 @@
 # Threat Intelligence Report: Play Ransomware (aka PlayCrypt)
 
 **Date:** April 2026  
-**Analyst:** Nicholaus Hedman  
+**Analyst:** Nicholaus
 **Classification:** TLP:WHITE  
 **Primary Source:** CISA/FBI Advisory AA23-352A (Updated June 2025)
 
