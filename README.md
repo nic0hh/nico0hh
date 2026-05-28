@@ -1,6 +1,6 @@
 # Hi, I'm Nicholaus
 
-<a href="https://www.linkedin.com/in/nico-h-b20312384/"><img src="https://img.shields.io/badge/-LinkedIn-0072b1?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+<a href="https://www.linkedin.com/in/nicohhh/"><img src="https://img.shields.io/badge/-LinkedIn-0072b1?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>
 <a href="https://tryhackme.com/p/nico.hedman"><img src="https://img.shields.io/badge/-TryHackMe-212c42?&style=for-the-badge&logo=tryhackme&logoColor=white" /></a>
 
 CySA+-certified SOC Analyst candidate based in The Hague, with an analytical research background and a strong instinct for pattern recognition.
