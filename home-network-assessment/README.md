@@ -29,45 +29,45 @@ In scanning the traffic going through my Pi-hole DNS filter with tcpdump, I disc
 
 ### 3.1 Network Inventory
 
-Nmap discovered 18 active hosts on the 192.168.2.0/24 subnet. The table below summarises devices, network addresses, and any notes.
+Nmap discovered 18 active hosts on the 192.168.X.0/24 subnet. The table below summarises devices, network addresses, and any notes.
 
 | IP Address | MAC Vendor | Device Type | Notes |
 |---|---|---|---|
-| 192.168.2.1 | Sagemcom Broadband SAS | Router/Modem | 4 unexpected ports open |
-| 192.168.2.2 | Sonos | Smart Speaker | Proprietary protocol 0x6969 |
-| 192.168.2.4 | Sonos | Smart Speaker | - |
-| 192.168.2.5 | Sonos | Smart Speaker | - |
-| 192.168.2.6 | Apple | iPhone/iPad | - |
-| 192.168.2.7 | Apple | iPhone/iPad | - |
-| 192.168.2.8 | Unknown | Unknown | Determined Apple device |
-| 192.168.2.9 | Arcadyan | Network Device | HTTP admin interface open |
-| 192.168.2.10 | Arcadyan | Network Device | HTTP admin interface open |
-| 192.168.2.14 | Unknown | Unknown | Determined Apple device |
-| 192.168.2.18 | Beijing Xiaomi | IoT desk light | All ports closed |
-| 192.168.2.22 | Apple | iPhone/iPad | - |
-| 192.168.2.25 | Liteon Technology | Unknown | All ports filtered |
-| 192.168.2.32 | Raspberry Pi | Pi-hole DNS #1 | SSH exposed. Port 3000 open (Grafana dashboard) |
-| 192.168.2.35 | Samsung Electronics | Smart TV | All ports closed |
-| 192.168.2.202 | Raspberry Pi | Pi-hole DNS #2 | SSH exposed. Port 3000 open (Grafana dashboard) |
-| 192.168.2.254 | Sagemcom Broadband SAS | Gateway | ISP management ports present, all closed |
-| 192.168.2.34 | - | Windows Workstation | SMB ports 139/445 open |
+| 192.168.X.1 | Sagemcom Broadband SAS | Router/Modem | 4 unexpected ports open |
+| 192.168.X.2 | Sonos | Smart Speaker | Proprietary protocol 0x6969 |
+| 192.168.X.4 | Sonos | Smart Speaker | - |
+| 192.168.X.5 | Sonos | Smart Speaker | - |
+| 192.168.X.6 | Apple | iPhone/iPad | - |
+| 192.168.X.7 | Apple | iPhone/iPad | - |
+| 192.168.X.8 | Unknown | Unknown | Determined Apple device |
+| 192.168.X.9 | Arcadyan | Network Device | HTTP admin interface open |
+| 192.168.X.10 | Arcadyan | Network Device | HTTP admin interface open |
+| 192.168.X.14 | Unknown | Unknown | Determined Apple device |
+| 192.168.X.18 | Beijing Xiaomi | IoT desk light | All ports closed |
+| 192.168.X.22 | Apple | iPhone/iPad | - |
+| 192.168.X.25 | Liteon Technology | Unknown | All ports filtered |
+| 192.168.X.32 | Raspberry Pi | Pi-hole DNS #1 | SSH exposed. Port 3000 open (Grafana dashboard) |
+| 192.168.X.35 | Samsung Electronics | Smart TV | All ports closed |
+| 192.168.X.202 | Raspberry Pi | Pi-hole DNS #2 | SSH exposed. Port 3000 open (Grafana dashboard) |
+| 192.168.X.254 | Sagemcom Broadband SAS | Gateway | ISP management ports present, all closed |
+| 192.168.X.34 | - | Windows Workstation | SMB ports 139/445 open |
 
 ### 3.2 Device Identification Notes
 
-Two hosts presented unknown MAC vendors: 192.168.2.8 and 192.168.2.14. Details of open ports revealed port 62078 (iphone-sync) on both devices, indicating Apple iOS devices with MAC randomisation enabled. This is a privacy feature introduced in iOS 14, where devices present a randomised MAC address per network, preventing tracking via hardware address. While negligible in this assessment, MAC randomisation has implications for network asset management as device inventory based solely on MAC vendor lookup will fail to identify these devices.
+Two hosts presented unknown MAC vendors: 192.168.X.8 and 192.168.X.14. Details of open ports revealed port 62078 (iphone-sync) on both devices, indicating Apple iOS devices with MAC randomisation enabled. This is a privacy feature introduced in iOS 14, where devices present a randomised MAC address per network, preventing tracking via hardware address. While negligible in this assessment, MAC randomisation has implications for network asset management as device inventory based solely on MAC vendor lookup will fail to identify these devices.
 
-Furthermore, hosts 192.168.2.6, 192.168.2.7, and 192.168.2.22 are all identified Apple MACs, making a total of 5 alongside the unidentified ones. However, there are only 4 Apple devices in the environment. This discrepancy is attributed to MAC address randomisation causing a single device to register as multiple hosts during the extended scan window of 3,859 seconds. This demonstrates how MAC randomisation can inflate host count during static network scanning.
+Furthermore, hosts 192.168.X.6, 192.168.X.7, and 192.168.X.22 are all identified Apple MACs, making a total of 5 alongside the unidentified ones. However, there are only 4 Apple devices in the environment. This discrepancy is attributed to MAC address randomisation causing a single device to register as multiple hosts during the extended scan window of 3,859 seconds. This demonstrates how MAC randomisation can inflate host count during static network scanning.
 
 ### 3.3 Findings
 
 | Finding | Devices | Port | Risk | Recommendation |
 |---|---|---|---|---|
-| Unencrypted HTTP admin interfaces | 192.168.2.9 and .10 (Arcadyan) | Port 80 | Credentials transmitted in plaintext. | Enable HTTPS on admin interface; if unsupported by firmware, restrict access by IP or disable remote admin. |
-| Local DNS running | 192.168.2.9 and .10 (Arcadyan) | Port 53 | Could bypass Pi-hole DNS filtering. | Investigate whether any hosts are resolving via Arcadyan rather than Pi-hole. Configure devices to force DNS through Pi-hole at the router level. |
-| SMB exposure on workstation | 192.168.2.34 (Windows PC) | Ports 135, 139, 445 | Historically exploited protocol (WannaCry). SMBv1 disabled but SMBv2/3 still exposed. Unnecessary exposure on home network. | Block ports 135, 139, 445 in Windows Firewall. |
-| SSH exposed on both Pi-hole instances | 192.168.2.32 and .202 | Port 22 | Brute force surface. Pi-hole compromise would allow DNS manipulation affecting all network traffic. | Upgrade to key-based authentication, disable password authentication. |
+| Unencrypted HTTP admin interfaces | 192.168.X.9 and .10 (Arcadyan) | Port 80 | Credentials transmitted in plaintext. | Enable HTTPS on admin interface; if unsupported by firmware, restrict access by IP or disable remote admin. |
+| Local DNS running | 192.168.X.9 and .10 (Arcadyan) | Port 53 | Could bypass Pi-hole DNS filtering. | Investigate whether any hosts are resolving via Arcadyan rather than Pi-hole. Configure devices to force DNS through Pi-hole at the router level. |
+| SMB exposure on workstation | 192.168.X.34 (Windows PC) | Ports 135, 139, 445 | Historically exploited protocol (WannaCry). SMBv1 disabled but SMBv2/3 still exposed. Unnecessary exposure on home network. | Block ports 135, 139, 445 in Windows Firewall. |
+| SSH exposed on both Pi-hole instances | 192.168.X.32 and .202 | Port 22 | Brute force surface. Pi-hole compromise would allow DNS manipulation affecting all network traffic. | Upgrade to key-based authentication, disable password authentication. |
 | LLMNR active on network | Network-wide | - | Credential capture via broadcast poisoning. | Protocol redundant with Pi-hole DNS stack: disable. |
-| Unidentified device | 192.168.2.25 (Liteon) | All ports filtered | Unidentified devices cannot be monitored or assessed for malicious behaviour, and if compromised, might not be recognised as anomalous. | Cross-reference DHCP lease timestamps against known devices, isolate to guest VLAN if unidentified. |
+| Unidentified device | 192.168.X.25 (Liteon) | All ports filtered | Unidentified devices cannot be monitored or assessed for malicious behaviour, and if compromised, might not be recognised as anomalous. | Cross-reference DHCP lease timestamps against known devices, isolate to guest VLAN if unidentified. |
 
 ## 4. Traffic Analysis
 
@@ -85,7 +85,7 @@ Traffic remained entirely within the local subnet with no external connections o
 
 - DNS queries were then isolated to reduce noise further, filtering to queries only and excluding responses: `dns.flags.response == 0 && !(eth.type == 0x6969) && !(udp.port == 1900) && !(udp.port == 5353)`
 
-- Pi-hole DNS integrity check by excluding Pi-hole instances and Cloudflare upstream queries: `dns && ip.dst == 1.1.1.1 && !(ip.src == 192.168.2.202) && !(ip.src == 192.168.2.32)`.
+- Pi-hole DNS integrity check by excluding Pi-hole instances and Cloudflare upstream queries: `dns && ip.dst == 1.1.1.1 && !(ip.src == 192.168.X.202) && !(ip.src == 192.168.X.32)`.
 
 The Pi-hole instances were excluded as they legitimately forward queries to Cloudflare upstream — any other host querying 1.1.1.1 directly would indicate a bypass. No such traffic was detected. All DNS queries observed during the capture window were routed through Pi-hole, confirming the filtering stack is functioning correctly.
 
