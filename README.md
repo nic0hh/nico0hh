@@ -22,6 +22,7 @@ Through academic studies in discourse and cultural analysis, and practical work 
 | Government advisory interpretation (CISA/FBI) | [Play Ransomware Threat Intelligence Report](https://github.com/nic0hh/nico0hh/blob/main/threat-intel-reports/play-ransomware-threat-intel/play-ransomware-playcrypt/README.md) |
 | Full-stack application development with security model | [Bookit](https://github.com/nic0hh/bookit) |
 | Responsible disclosure and vulnerability documentation | [Bookit](https://github.com/nic0hh/bookit) |
+| SQL querying and Hadoop/Hive fundamentals (joins, aggregation, partitioning) | [Hadoop/Hive Practice](https://github.com/nic0hh/nico0hh/tree/main/hadoop_practice) |
 
 ## Tools
 **Network**
@@ -53,6 +54,12 @@ Through academic studies in discourse and cultural analysis, and practical work 
 <img src="https://img.shields.io/badge/-Supabase-3ECF8E?&style=for-the-badge&logo=supabase&logoColor=white" />
 </div>
 
+**Data & Querying**
+<div>
+<img src="https://img.shields.io/badge/-Apache_Hive-FDEE21?&style=for-the-badge&logo=apachehive&logoColor=black" />
+<img src="https://img.shields.io/badge/-Google_Cloud_Dataproc-4285F4?&style=for-the-badge&logo=googlecloud&logoColor=white" />
+</div>
+
 ## Certifications
 <div>
 <img src="https://img.shields.io/badge/-Google_Cybersecurity_Certificate-1a73e8?&style=for-the-badge&logo=google&logoColor=white" />
@@ -66,3 +73,4 @@ Through academic studies in discourse and cultural analysis, and practical work 
 - [BlueSky Ransomware Lab](https://github.com/nic0hh/nico0hh/tree/main/dfir-investigations/bluesky-ransomware) — DFIR investigation of a full ransomware attack chain with threat intel enrichment and MITRE ATT&CK mapping
 - [Play Ransomware Threat Intelligence Report](https://github.com/nic0hh/nico0hh/blob/main/threat-intel-reports/play-ransomware-threat-intel/play-ransomware-playcrypt/README.md) — Analyst report based on CISA/FBI advisory AA23-352A with kill chain mapping and detection recommendations
 - [Bookit](https://github.com/nic0hh/bookit) — Full-stack bookmark management app built with React Native and Supabase, featuring a documented security model, RLS policies, SSRF protection, and transparent disclosure of a known vulnerability in the README
+- [Hadoop/Hive Practice](https://github.com/nic0hh/nico0hh/tree/main/hadoop_practice) — Hands-on Hive querying on a Google Cloud Dataproc cluster: joins, aggregation, and partitioning, documented with terminal output
