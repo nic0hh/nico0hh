@@ -22,7 +22,10 @@ Through academic studies in discourse and cultural analysis, and practical work 
 | Government advisory interpretation (CISA/FBI) | [Play Ransomware Threat Intelligence Report](https://github.com/nic0hh/nico0hh/blob/main/threat-intel-reports/play-ransomware-threat-intel/play-ransomware-playcrypt/README.md) |
 | Full-stack application development with security model | [Bookit](https://github.com/nic0hh/bookit) |
 | Responsible disclosure and vulnerability documentation | [Bookit](https://github.com/nic0hh/bookit) |
-| SQL querying and Hadoop/Hive fundamentals (joins, aggregation, partitioning) | [Hadoop/Hive Practice](https://github.com/nic0hh/nico0hh/tree/main/hadoop_practice) |
+| Directing, verifying, and correcting an AI coding agent (Claude Code) | [Agentic Debugging & Data Repair: Bookit](https://github.com/nic0hh/nico0hh/tree/main/agentic-debugging) |
+| Reading and verifying SQL query output for data diagnosis and repair | [Agentic Debugging & Data Repair: Bookit](https://github.com/nic0hh/nico0hh/tree/main/agentic-debugging) |
+| SQL querying (joins, aggregation, HackerRank certified) | [Hadoop/Hive Practice](https://github.com/nic0hh/nico0hh/tree/main/hadoop_practice) |
+| Hadoop/Hive fundamentals (Google Cloud Dataproc) | [Hadoop/Hive Practice](https://github.com/nic0hh/nico0hh/tree/main/hadoop_practice) |
 
 ## Tools
 **Network**
@@ -56,6 +59,7 @@ Through academic studies in discourse and cultural analysis, and practical work 
 
 **Data & Querying**
 <div>
+<img src="https://img.shields.io/badge/-SQL-4479A1?&style=for-the-badge&logo=postgresql&logoColor=white" />
 <img src="https://img.shields.io/badge/-Apache_Hive-FDEE21?&style=for-the-badge&logo=apachehive&logoColor=black" />
 <img src="https://img.shields.io/badge/-Google_Cloud_Dataproc-4285F4?&style=for-the-badge&logo=googlecloud&logoColor=white" />
 </div>
@@ -73,4 +77,5 @@ Through academic studies in discourse and cultural analysis, and practical work 
 - [BlueSky Ransomware Lab](https://github.com/nic0hh/nico0hh/tree/main/dfir-investigations/bluesky-ransomware) — DFIR investigation of a full ransomware attack chain with threat intel enrichment and MITRE ATT&CK mapping
 - [Play Ransomware Threat Intelligence Report](https://github.com/nic0hh/nico0hh/blob/main/threat-intel-reports/play-ransomware-threat-intel/play-ransomware-playcrypt/README.md) — Analyst report based on CISA/FBI advisory AA23-352A with kill chain mapping and detection recommendations
 - [Bookit](https://github.com/nic0hh/bookit) — Full-stack bookmark management app built with React Native and Supabase, featuring a documented security model, RLS policies, SSRF protection, and transparent disclosure of a known vulnerability in the README
+- [Agentic Debugging & Data Repair: Bookit](https://github.com/nic0hh/nico0hh/tree/main/agentic-debugging) — Two-day documented exercise directing Claude Code against the Bookit app: catching a claimed-but-not-made fix in a diff, verifying a data-corruption bug with a live query before repairing it, and a 940-tag taxonomy cleanup where domain knowledge caught a wrong AI-suggested merge
 - [Hadoop/Hive Practice](https://github.com/nic0hh/nico0hh/tree/main/hadoop_practice) — Hands-on Hive querying on a Google Cloud Dataproc cluster: joins, aggregation, and partitioning, documented with terminal output
