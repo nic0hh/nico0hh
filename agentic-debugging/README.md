@@ -1,6 +1,6 @@
 # Agentic Debugging & Data Repair: Bookit
 
-Notes from two days spent working with Claude Code on a personal bookmarking app I built: Bookit (React Native + Expo + Supabase). This is a documented exercise in directing an AI coding agent, checking its work properly, and catching mistakes, rather than just accepting whatever it produced.
+Notes from two days spent working with Claude Code on a personal bookmarking app I built: [Bookit](https://github.com/nic0hh/bookit) (React Native + Expo + Supabase). This is a documented exercise in directing an AI coding agent, checking its work properly, and catching mistakes, rather than just accepting whatever it produced.
 
 Earlier work on this app with GitHub Copilot in VS Code was a frustrating experience, Copilot kept getting stuck fixing its own mistakes in a loop. Came back to this app working with an agent in a more structured way, and paid closer attention to how I was checking its output.
 
