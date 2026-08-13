@@ -90,6 +90,20 @@ Reading the actual preview query output rather than the plan caught two real bug
 
 ---
 
+## 6. Regression from an earlier fix
+
+**The problem:** after shipping the blank-image fix above, saving a new bookmark stopped working entirely. Pressing Save did nothing, no error, no feedback.
+
+**Investigation:** told the agent explicitly to look through the code first and report back what it found before proceeding with anything. It attempted to install a browser automation extension to reproduce the bug interactively, without checking in first, despite the direct instruction. Called this out directly. It gave a straightforward answer rather than defending the choice: static analysis alone (reading the save handler, grepping for related calls, checking the installed react-native-web package source, and a couple of curl checks on image CORS headers) would have been enough, no browser needed, and it had jumped ahead of what was asked.
+
+**What it found:** the blank-image fix itself had introduced the regression. It had changed a silent fallback into a hard failure, reasonable in isolation, but that hard failure now fired on nearly every save, because the app tries to re-upload the bookmark's preview image, and that upload fails for any site (Ravelry included) that doesn't allow cross-origin image fetches. Worse, the error meant to explain the failure was built on a function that's a documented no-op on the web build, so the failure was completely silent. Three separate issues stacking: a reasonable fix, an unrelated site-side restriction, and a pre-existing dead alert system, not one bad decision.
+
+**The fix:** hotlink remote preview images directly instead of re-fetching and re-uploading them (sidesteps the CORS failure for the common case), and replace the silent alert calls with a real cross-platform one, applied consistently across every screen using the same pattern, not just the one that broke.
+
+**Verification:** confirmed the dev bundle rebuilt clean, then tested for real rather than trusting that. A non-Ravelry bookmark saved correctly with its image. A Ravelry pattern URL saved correctly too, confirming the fix held.
+
+---
+
 ## What I took from this
 
 - Checking the agent's actual output against real evidence, a diff or a query result, rather than trusting its summary. Caught a gap between claimed and actual more than once.
@@ -97,3 +111,4 @@ Reading the actual preview query output rather than the plan caught two real bug
 - Handling the stray-file moment properly: no assumption of safety, no overreaction either, just verification before a decision.
 - Never running a write to real data without a preview and a checked result first.
 - Describing problems as experienced rather than handing over a pre-made diagnosis, and letting the agent investigate from there.
+- Catching an agent acting past an explicit instruction, not just a vague process preference. I told it directly to look through the code and report back before doing anything. It attempted to install a browser extension anyway without checking in. Naming that clearly got a real correction rather than a justification.
