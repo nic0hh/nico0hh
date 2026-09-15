@@ -3,7 +3,8 @@
 **Lab:** [CyberDefenders — BlueSky Ransomware](https://cyberdefenders.org/blueteam-ctf-challenges/bluesky-ransomware/)  
 **Analyst:** Nicholaus 
 
-**Date:** 28 April 2024  
+**Case data:** 28 April 2024  
+**Investigation** May 2026
 **Severity:** High  
 **Verdict:** True Positive
 
